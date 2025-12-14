@@ -6,8 +6,20 @@ return {
 		---@type snacks.Config
 		opts = {
 			input = { enabled = true }, -- required for picker
-			picker = { enabled = true }, -- file picker / grep
-			dashboard = { enable = true },
+			picker = {
+				enabled = true,
+				sources = {
+					files = {
+						hidden = true, -- Show hidden/dotfiles
+						ignored = false, -- Respect .gitignore
+					},
+					grep = {
+						hidden = true, -- Also search in hidden files
+						ignored = false,
+					},
+				},
+			}, -- file picker / grep
+			dashboard = { enabled = true },
 			indent = { enabled = true },
 		},
 		keys = {
@@ -43,7 +55,7 @@ return {
 				desc = "Diagnostics",
 			},
 			{
-				"<leader>sD",
+				"<leader>D",
 				function()
 					Snacks.picker.diagnostics_buffer()
 				end,
