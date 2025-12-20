@@ -10,6 +10,7 @@ return {
 				"cssls",
 				"lua_ls",
 				"pyright",
+				"tailwindcss",
 			},
 		},
 		dependencies = {
@@ -42,6 +43,12 @@ return {
 		},
 		dependencies = {
 			"williamboman/mason.nvim",
+		},
+	},
+	{
+		"brenoprata10/nvim-highlight-colors",
+		opts = {
+			enable_tailwind = true,
 		},
 	},
 }

@@ -34,32 +34,18 @@ return {
 
 			-- File picker
 			{
-				"<leader>ff",
+				"<leader>f",
 				function()
 					require("snacks").picker.files()
 				end,
 				desc = "Find Files",
 			},
 			{
-				"<leader>fg",
+				"<leader>g",
 				function()
 					require("snacks").picker.grep()
 				end,
 				desc = "Grep word",
-			},
-			{
-				"<leader>sd",
-				function()
-					Snacks.picker.diagnostics()
-				end,
-				desc = "Diagnostics",
-			},
-			{
-				"<leader>D",
-				function()
-					Snacks.picker.diagnostics_buffer()
-				end,
-				desc = "Buffer Diagnostics",
 			},
 		},
 	},

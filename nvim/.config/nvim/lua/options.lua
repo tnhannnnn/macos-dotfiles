@@ -1,5 +1,6 @@
 --basic setting
 vim.o.number = true
+vim.o.relativenumber = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
@@ -13,5 +14,3 @@ vim.o.smartcase = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.fillchars:append({ eob = " " }) -- Unicode non-breaking space (U+202F)
 vim.opt.shortmess:append("I") -- tắt intro message
---Set your colorscheme here
-vim.cmd("colorscheme rose-pine-moon")

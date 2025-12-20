@@ -9,3 +9,5 @@ window-padding-y = 0
 window-width = 133
 window-height = 43
 confirm-close-surface = false
+window-padding-balance = true
+window-padding-color = extend

@@ -14,6 +14,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		opts.desc = "See available code actions"
 		keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
+		opts.desc = "Diagnostics"
+		keymap.set("n", "<leader>sd", function()
+			Snacks.picker.diagnostics()
+		end, opts)
+		opts.desc = "Buffer diagnostics"
+		keymap.set("n", "<leader>D", function()
+			Snacks.picker.diagnostics_buffer()
+		end, opts)
 		opts.desc = "Smart rename"
 		keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
