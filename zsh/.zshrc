@@ -2,6 +2,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$PATH:/Users/tnhannn/.local/bin"
+export EDITOR=nvim
+export VISUAL=nvim
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
@@ -18,3 +21,6 @@ alias tn="tmux new-session"
 alias ta="tmux attach"
 alias td="tmux detach"
 alias tl="tmux list-sessions"
+alias nn='NVIM_APPNAME=nvim-nightly nvim'
+alias nv='NVIM_APPNAME=nvim nvim'
+

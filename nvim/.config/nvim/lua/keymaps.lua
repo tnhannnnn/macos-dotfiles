@@ -5,8 +5,8 @@ map({ "n", "t" }, "<C-j>", [[<C-\><C-n><C-w>j]], { noremap = true, silent = true
 map({ "n", "t" }, "<C-k>", [[<C-\><C-n><C-w>k]], { noremap = true, silent = true })
 map({ "n", "t" }, "<C-l>", [[<C-\><C-n><C-w>l]], { noremap = true, silent = true })
 --Several minor things
-map("v", "<C-c>", '"+y', { desc = "Copy to system clipboard" })
-map("n", "<C-c>", '"+yy', { desc = "Copy line to system clipboard" })
+map("n", "<C-c>t", "<cmd>tabnew<CR>", { desc = "New tab" })
+map("n", "<C-c>x", "<cmd>tabclose<CR>", { desc = "Close tab" })
 vim.g.mapleader = " "
 -- Compile & run C++ file
 vim.keymap.set("n", "<leader>bc", function()

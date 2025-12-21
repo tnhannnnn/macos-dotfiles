@@ -7,6 +7,7 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.cursorline = true
 vim.o.mouse = "a"
+vim.o.confirm = true -- ==))
 vim.o.termguicolors = true
 vim.o.undofile = true
 vim.o.ignorecase = true
