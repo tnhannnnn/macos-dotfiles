@@ -23,4 +23,4 @@ alias td="tmux detach"
 alias tl="tmux list-sessions"
 alias nn='NVIM_APPNAME=nvim-nightly nvim'
 alias nv='NVIM_APPNAME=nvim nvim'
-
+alias clock='tty-clock  -c -b -C 5 -D'
