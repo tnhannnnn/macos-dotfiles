@@ -18,16 +18,10 @@ return {
 			time_format = "%H:%M",
 		},
 		note_id_func = function(title)
-			if title and title ~= "" then
-				return title:gsub("%s+", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-			else
+			if title == nil then
 				return tostring(os.time())
 			end
-		end,
-		note_path_func = function(spec)
-			-- Tạo tên file từ tiêu đề (slug hóa)
-			local name = spec.title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-			return (spec.dir / name):with_suffix(".md")
+			return title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", " "):lower()
 		end,
 	},
 }

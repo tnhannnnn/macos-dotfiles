@@ -21,6 +21,6 @@ alias tn="tmux new-session"
 alias ta="tmux attach"
 alias td="tmux detach"
 alias tl="tmux list-sessions"
-alias nn='NVIM_APPNAME=nvim-nightly nvim'
+alias nn='cd /Users/tnhannn/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Note && NVIM_APPNAME=nvim-note nvim'
 alias nv='NVIM_APPNAME=nvim nvim'
 alias clock='tty-clock  -c -b -C 5 -D'
