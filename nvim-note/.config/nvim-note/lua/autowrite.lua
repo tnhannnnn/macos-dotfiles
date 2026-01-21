@@ -87,7 +87,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 
 		-- TÙY CHỈNH: Thay đổi đường dẫn vault của bạn ở đây
 		-- Expand ~ thành đường dẫn home thực
-		local vault_path = vim.fn.expand("~/Documents/note/")
+		local vault_path = vim.fn.expand("~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Note/")
 
 		-- Kiểm tra xem file có nằm trong vault không
 		-- Dùng string.find thay vì match để tránh vấn đề pattern

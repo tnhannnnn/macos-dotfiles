@@ -23,6 +23,12 @@ vim.o.cmdheight = 0
 vim.o.showcmd = true
 vim.opt.laststatus = 0
 vim.opt.winbar = "%t"
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "md" },
+	callback = function()
+		vim.opt_local.wrap = false
+	end,
+})
 -- keymap
 local map = vim.keymap.set
 map("n", "<leader>tn", "<cmd>tabnew<CR>", { silent = true })
@@ -71,6 +77,10 @@ require("lazy").setup({
 		config = function(_, opts)
 			require("ibl").setup(opts)
 		end,
+	},
+	{
+		"karb94/neoscroll.nvim",
+		opts = {},
 	},
 
 	{
