@@ -34,14 +34,14 @@ return {
 
 			-- File picker
 			{
-				"<leader>f",
+				"<leader>ff",
 				function()
 					require("snacks").picker.files()
 				end,
 				desc = "Find Files",
 			},
 			{
-				"<leader>g",
+				"<leader>fg",
 				function()
 					require("snacks").picker.grep()
 				end,

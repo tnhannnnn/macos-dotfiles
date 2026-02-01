@@ -1,7 +1,9 @@
+vim.g.have_nerd_font = true
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
 vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.cursorline = true
@@ -22,7 +24,7 @@ vim.opt.foldlevelstart = 99
 vim.o.cmdheight = 0
 vim.o.showcmd = true
 vim.opt.laststatus = 0
-vim.opt.winbar = "%t"
+vim.opt.scrolloff = 10
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "md" },
 	callback = function()
@@ -31,13 +33,18 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 -- keymap
 local map = vim.keymap.set
-map("n", "<leader>tn", "<cmd>tabnew<CR>", { silent = true })
-map("n", "<leader>tx", "<cmd>tabclose<CR>", { silent = true })
+map("n", "<leader>bn", "<cmd>bnext<CR>", { silent = true })
+map("n", "<leader>bp", "<cmd>bprevious<CR>", { silent = true })
+map("n", "<leader>bx", "<cmd>bdelete<CR>", { silent = true })
+map("n", "<Esc>", "<cmd>noh<CR><Esc>", { silent = true })
 map("n", "<C-h>", "<C-w>h", {})
 map("n", "<C-j>", "<C-w>j", {})
 map("n", "<C-k>", "<C-w>k", {})
 map("n", "<C-l>", "<C-w>l", {})
-map("n", "<Esc>", "<cmd>noh<CR><Esc>", { silent = true })
+map("i", "<A-h>", "<Left>", {})
+map("i", "<A-j>", "<Down>", {})
+map("i", "<A-k>", "<Up>", {})
+map("i", "<A-l>", "<Right>", {})
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	vim.fn.system({
@@ -51,13 +58,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
-	{ "rebelot/kanagawa.nvim" },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "rose-pine/neovim", name = "rose-pine" },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
 		build = ":TSUpdate",
 		config = function()
-			require("nvim-treesitter").install({ "markdown" })
+			require("nvim-treesitter").install({ "markdown", "html" })
 		end,
 	},
 	{
@@ -77,6 +85,12 @@ require("lazy").setup({
 		config = function(_, opts)
 			require("ibl").setup(opts)
 		end,
+	},
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		requires = "nvim-tree/nvim-web-devicons",
+		opts = {},
 	},
 	{
 		"karb94/neoscroll.nvim",
@@ -168,6 +182,7 @@ require("lazy").setup({
 			{ "<leader>ot", "<cmd>Obsidian today<CR>" },
 			{ "<leader>od", "<cmd>Obsidian dailies<CR>" },
 			{ "<leader>on", "<cmd>Obsidian new_from_template<CR>" },
+			{ "<leader>ob", "<cmd>Obsidian backlinks<CR>" },
 		},
 		opts = {
 			legacy_commands = false, -- this will be removed in the next major release
@@ -239,6 +254,29 @@ require("lazy").setup({
 		notify = false,
 	},
 })
-vim.cmd("colorscheme kanagawa-wave")
+vim.cmd("colorscheme rose-pine-moon")
 require("task_organizer")
 require("autowrite")
+vim.keymap.set("n", "<leader>w", function()
+	local wrap = vim.opt.wrap:get()
+	vim.opt.wrap = not wrap
+	vim.opt.linebreak = not wrap
+	vim.opt.breakindent = not wrap
+end, {
+	desc = "Toggle wrap + linebreak + breakindent",
+})
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function(args)
+		vim.treesitter.start(args.buf, "markdown")
+	end,
+})
+-- Insert **** and move cursor to the middle
+vim.keymap.set("i", "<C-b>", function()
+	return "****<Left><Left>"
+end, { expr = true, noremap = true })
+
+-- Insert ** and move cursor to the middle
+vim.keymap.set("i", "<C-u>", function()
+	return "**<Left>"
+end, { expr = true, noremap = true })
